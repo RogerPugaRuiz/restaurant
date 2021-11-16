@@ -11,6 +11,7 @@ use roger\users as users;
 require_once "constants.php";
 require_once "exceptions/file_not_found.php";
 require_once "exceptions/file_is_not_writable.php";
+require_once "fn-php/users.php";
 
 
 /**

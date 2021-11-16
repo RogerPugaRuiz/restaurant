@@ -1,0 +1,63 @@
+#topbar ul {
+    background-color: antiquewhite;
+    width: auto;
+}
+#topbar ul li {
+    display: inline;
+    text-decoration: none;
+    color: darkblue;
+}
+#topbar ul li a {
+    text-decoration: none;
+    background-color: lightgray;
+}
+#topbar ul * :hover {
+    background-color: burlywood;
+    color: whitesmoke;
+}
+div.footer {
+    background-color: antiquewhite;;
+    color: blueviolet;
+}
+
+/* message styles */
+
+.message {
+    background: linear-gradient(tomato,rgb(255, 56, 21));
+    display: block;
+    position: absolute;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 5px gray;
+    border: 1px solid black ;
+    top: 25%;
+    left: 35%;
+    width: 500px;
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.close_message{
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.activated{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22, 22, 22, 0.473);
+    z-index: 500;
+}
+
+@media only screen and (max-width:800px){
+    .message{
+        width: 100%;
+        left: 0;
+        top: 0;
+
+    }
+}

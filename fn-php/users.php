@@ -1,4 +1,7 @@
 <?php
+
+namespace roger\users;
+
 use roger\user as user;
 require_once "user.php";
 require_once "constants.php";
@@ -25,10 +28,10 @@ function getUsers(){
 /**
  * Method to check if a user exists in the database
  * @param array $users
- * @param object $user
+ * @param $user
  * @return true if the user exists
  */
-function ifUserExistsIn(array $users,object $user){
+function ifUserExistsIn(array $users, $user){
     $result = false;
     foreach($users as $user){
         if ($user->compareTo($user)){

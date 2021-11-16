@@ -37,6 +37,7 @@ function append(string $username, string $password, string $name, string $surnam
                 fclose($file);
                 return true;
             }else{
+                fclose($file);
                 return false;
             }
 

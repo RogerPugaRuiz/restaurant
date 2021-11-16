@@ -5,6 +5,8 @@ namespace roger\new_user;
 use Exception;
 use File_is_not_writable;
 use File_not_found_exception;
+use roger\users as users;
+
 
 require_once "constants.php";
 require_once "exceptions/file_not_found.php";
@@ -28,9 +30,15 @@ function append(string $username, string $password, string $name, string $surnam
         
         if (is_writable($file_name)) {
             $file = fopen($file_name, 'a');
-            fwrite($file, $data);
-            fclose($file);
-            return true;
+            $users = users\getUsers();
+            if (!users\ifUserExistsIn($users, $username)){
+                fwrite($file, $data);
+                fclose($file);
+                return true;
+            }else{
+                return false;
+            }
+
         }else{
             throw new File_is_not_writable("File " . $file_name . " exists and cannot be written");
         }

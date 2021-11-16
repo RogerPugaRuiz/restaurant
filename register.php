@@ -34,9 +34,9 @@ require_once "fn-php/new_user.php";
                     $is_new_user = new_user\append($username,$password,$name,$surname,$path);
                     
                 }catch (File_not_found_exception $ex){
-                    getMessage("FILE ERROR","File not found");
+                    getMessage("FILE ERROR","File not found: " . $path);
                 }catch (File_is_not_writable $ex){
-                    getMessage("FILE ERROR", "File is not writable, please check permissions");
+                    getMessage("FILE ERROR", "File is not writable, please check permissions: " . $path);
                 }      
         } 
     }

@@ -93,6 +93,3 @@ class User {
 
     }
 }
-
-$user = new User("Roger234","1234","registered","Roger","Puga");
-$user2 = new User("Roger234","1234","registered","Roger","Puga");

@@ -21,3 +21,19 @@ function getUsers(){
     }
     return $users;
 }
+
+/**
+ * Method to check if a user exists in the database
+ * @param array $users
+ * @param object $user
+ * @return true if the user exists
+ */
+function ifUserExistsIn(array $users,object $user){
+    $result = false;
+    foreach($users as $user){
+        if ($user->compareTo($user)){
+            $result = true;
+        }
+    }
+    return $result;
+}

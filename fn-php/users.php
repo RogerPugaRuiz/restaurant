@@ -11,7 +11,7 @@ require_once "constants.php";
  * Method to read the users file and create a array of users
  */
 function getUsers(){
-    $path = "../files/" . FILENAME;
+    $path = "files/" . FILENAME;
     $users = [];
     if ($file = fopen($path, "r")){
         while($row = fgets($file)){

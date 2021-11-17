@@ -76,7 +76,7 @@ class User {
      * @param $other
      * @return true if they are equal
      */
-    function compareTo ($other){
+    function compareTo ($other):bool{
         if (is_string($other)){
             if ($this->getUsername() == $other){
                 return true;
@@ -91,5 +91,19 @@ class User {
             }
         }
 
+    }
+
+    /**
+     * Method to validate user
+     * @param string $username
+     * @param string $password
+     * @return boolean true if user is valid
+     */
+    function validate (string $username, string $password):bool{
+        if ($this->getUsername() == $username && $this->getPassword() == $password){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

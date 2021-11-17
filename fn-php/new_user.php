@@ -22,16 +22,17 @@ require_once "fn-php/users.php";
  * @param $surname
  * @param $file_name
  * @return true if successful
- * @throws File_not_found_exception,
+ * @throws File_not_found_exception
+ * @throws File_is_not_writable
  */
 function append(string $username, string $password, string $name, string $surname, $file_name)
 {
     $data = $username . ";" . $password . ";" . REGISTERED["text"] . ";" . $name . ";" . $surname . "\n";
-    if (file_exists($file_name) && !is_dir($file_name)) {
+    if (file_exists($file_name) && ($file_name)) {
         
         if (is_writable($file_name)) {
             $file = fopen($file_name, 'a');
-            $users = users\getUsers();
+            $users = users\getUsers(FILENAME);
             if (!users\ifUserExistsIn($users, $username)){
                 fwrite($file, $data);
                 fclose($file);

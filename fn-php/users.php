@@ -9,9 +9,9 @@ require_once "constants.php";
 
 /**
  * Method to read the users file and create a array of users
+ * @param string $path relative path
  */
-function getUsers(){
-    $path = "files/" . FILENAME;
+function getUsers(string $path):array{
     $users = [];
     if ($file = fopen($path, "r")){
         while($row = fgets($file)){
@@ -31,7 +31,7 @@ function getUsers(){
  * @param $user
  * @return true if the user exists
  */
-function ifUserExistsIn(array $users, $user){
+function ifUserExistsIn(array $users, $user):bool{
     $result = false;
     foreach($users as $user){
         if ($user->compareTo($user)){
@@ -39,4 +39,20 @@ function ifUserExistsIn(array $users, $user){
         }
     }
     return $result;
+}
+
+/**
+ * Method to validate a user in the users.txt
+ * @param array $users
+ * @param string $user
+ * @param string $password
+ * @return User if the user is valid or false if it is not valid
+ */
+function validateUser(array $users, string $username, string $password){
+    foreach($users as $user){
+        if ($user->validate($username, $password)){
+            return $user;
+        }
+    }
+    return false;
 }

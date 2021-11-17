@@ -1,7 +1,7 @@
 <?php
-define("FILENAME","users.txt");
+define("FILENAME","/home/roger/public_html/restaurant/files/users.txt");
 define("ONLYLETTERS",["options" => ['regexp' => "/^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/"]]);
-
+define("PASSWORDVALIDATE",["options" => ['regexp' => "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/"]]);
 
 // ROLES
 define("ADMIN",["text" => "admin","code" => 0]);

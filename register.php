@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,33 +15,46 @@
 <body>
 
     <?php
+
     use \roger\new_user as new_user;
+    use roger\user\User;
 
-use function roger\message\getMessage;
+    use function roger\message\getMessage;
 
-require_once "fn-php/new_user.php";
+    require_once "fn-php/new_user.php";
     require_once "message.php";
-    
-    if (filter_has_var(INPUT_POST, "registersubmit")) {
-        $username = filter_input(INPUT_POST,"username",FILTER_SANITIZE_STRING);
-        $password = filter_input(INPUT_POST,"password",FILTER_SANITIZE_STRING);
-        $name = filter_input(INPUT_POST,"name",FILTER_SANITIZE_STRING);
-        $surname = filter_input(INPUT_POST,"surname",FILTER_SANITIZE_STRING);
+    require_once "fn-php/constants.php";
 
-        if (filter_var($name,FILTER_VALIDATE_REGEXP,ONLYLETTERS) &&
-            filter_var($surname,FILTER_VALIDATE_REGEXP,ONLYLETTERS)){
-                $path = "files/" . FILENAME;
-                try{
-                    $is_new_user = new_user\append($username,$password,$name,$surname,$path);
-                    
-                }catch (File_not_found_exception $ex){
-                    getMessage("FILE ERROR","File not found: " . $path);
-                }catch (File_is_not_writable $ex){
-                    getMessage("FILE ERROR", "File is not writable, please check permissions: " . $path);
-                }      
-        } 
+    if (filter_has_var(INPUT_POST, "registersubmit")) {
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+        $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_STRING);
+
+        if (
+            filter_var($password, FILTER_VALIDATE_REGEXP, PASSWORDVALIDATE ) &&
+            filter_var($name, FILTER_VALIDATE_REGEXP, ONLYLETTERS) &&
+            filter_var($surname, FILTER_VALIDATE_REGEXP, ONLYLETTERS)
+        ) {
+            try {
+                $is_new_user = new_user\append(
+                    $username, 
+                    $password, 
+                    $name, 
+                    $surname, 
+                    FILENAME);
+
+                if ($is_new_user) {
+                    header("Location:index.php");
+                }
+            } catch (File_not_found_exception $ex) {
+                getMessage("FILE ERROR", "File not found: " . FILENAME);
+            } catch (File_is_not_writable $ex) {
+                getMessage("FILE ERROR", "File is not writable, please check permissions: " . FILENAME);
+            }
+        }
     }
-    if (filter_has_var(INPUT_POST,"cancel")){
+    if (filter_has_var(INPUT_POST, "cancel")) {
         header("Location: index.php");
     }
     ?>

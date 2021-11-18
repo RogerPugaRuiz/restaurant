@@ -5,6 +5,7 @@ use LoginException;
 use roger\users as users;
 
 require_once "users.php";
+require_once "constants.php";
 
 /**
  * Method to login a user

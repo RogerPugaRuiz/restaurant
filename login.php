@@ -13,7 +13,7 @@
 
 <body>
     <?php
-
+    session_start();
     use function roger\check_login\login;
     use roger\user\User;
 
@@ -33,6 +33,7 @@
         }else{
             $_SESSION["name"] = $user->getUsername();
             $_SESSION["password"] = $user->getPassword();
+            // echo $_SESSION["name"]. " -- " .$_SESSION["password"];
             header("Location:index.php");
         }
 

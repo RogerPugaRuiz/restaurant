@@ -4,7 +4,6 @@ namespace roger\users;
 
 use roger\user as user;
 require_once "user.php";
-require_once "constants.php";
 
 
 /**

@@ -18,24 +18,9 @@
 <body>
     <div class="container-fluid">
         <?php
-        session_start();
-        use function roger\session\getRoleInSession;
-        require_once "fn-php/session.php";
-        require_once "fn-php/constants.php";
-        
-
-        if (isset($_SESSION["name"]) && isset($_SESSION["password"])){
-            $role = getRoleInSession($_SESSION["name"],$_SESSION["password"]);
-            if ($role == REGISTERED["text"]){
-                header("Location:role/registered/index.php");
-                echo "registered";
-            }
-            echo "registered";
-            
-        }
-        
+        include_once "topmenu.php"; 
         ?>
-        <?php include_once "topmenu.php"; ?>
+
         <div class="container">
             <h2>Restaurant application</h2>
             <p>

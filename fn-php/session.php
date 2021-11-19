@@ -1,5 +1,6 @@
 <?php
 namespace roger\session;
+
 use function roger\users\getUsers;
 require_once "users.php";
 

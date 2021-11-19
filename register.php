@@ -3,13 +3,14 @@
 <html lang="es">
 
 <head>
-    <title>Login</title>
+    <title>Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 
 <body>
@@ -24,6 +25,11 @@
     require_once "fn-php/new_user.php";
     require_once "message.php";
     require_once "fn-php/constants.php";
+
+    $username = "";
+    $password = "";
+    $name = "";
+    $surname = "";
 
     if (filter_has_var(INPUT_POST, "registersubmit")) {
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
@@ -65,25 +71,33 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" value="<?php echo $username; ?>">
+                <p class="info" style="color:red;"></p>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="<?php echo $password; ?>">
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                <p class="info" style="color:red;"></p>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<?php echo $name ?>">
+                <p class="info" style="color:red;"></p>
             </div>
             <div class="form-group">
                 <label for="surname">Surname:</label>
-                <input type="text" class="form-control" id="surname" placeholder="Enter surname" name="surname">
+                <input type="text" class="form-control" id="surname" placeholder="Enter surname" name="surname" value="<?php echo $surname ?>" >
+                <p class="info" style="color:red;"></p>
             </div>
             <button type="submit" name="registersubmit" class="btn btn-default">Submit</button>
             <button name="cancel" class="btn btn-default">Cancel</button>
+            <script src="js/register.js"></script>
         </form>
     </div>
-    <script src="js/close_message.js"></script>
+
+    <script src="js/close_message.js"></script> 
+    <script src="js/see_and_hide_password.js"></script>
 </body>
 
 </html>

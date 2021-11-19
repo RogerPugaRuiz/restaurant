@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 
 <body>
@@ -24,16 +25,28 @@
     require_once "message.php";
 
     $message_error = "";
-    $username = "";
-    $password = "";
+
+    if (filter_has_var(INPUT_COOKIE,"name") && filter_has_var(INPUT_COOKIE,"password")) {
+        $username = filter_input(INPUT_COOKIE,"name");
+        $password = filter_input(INPUT_COOKIE,"password");
+    }else{
+        $username = "";
+        $password = "";
+    
+    }
 
     if (filter_has_var(INPUT_POST, "loginsubmit")) {
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
+        if (filter_has_var(INPUT_POST, "remember")){
+            setcookie(name:"name", value:$username,secure: true);
+            setcookie(name:"password",value:$password,secure:true);
+        }
+
         $user = login($username, $password);
         if (!$user) {
-            $message_error = "Username or password incorrect";
+            $message_error = "Incorrect name or password";
         }else{
             $_SESSION["name"] = $user->getUsername();
             $_SESSION["password"] = $user->getPassword();
@@ -55,6 +68,7 @@
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="<?php echo $password ?>">
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
             <div class="checkbox">
                 <label><input type="checkbox" name="remember"> Remember me</label>
@@ -65,6 +79,7 @@
         <p style="color:red"><?php echo $message_error ?></p>
     </div>
     <script src="js/close_message.js"></script>
+    <script src="js/see_and_hide_password.js"></script>
 </body>
 
 </html>

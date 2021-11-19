@@ -30,10 +30,10 @@ function getUsers(string $path):array{
  * @param $user
  * @return true if the user exists
  */
-function ifUserExistsIn(array $users, $user):bool{
+function ifUserExistsIn(array $users, $userSearch):bool{
     $result = false;
     foreach($users as $user){
-        if ($user->compareTo($user)){
+        if ($user->compareTo($userSearch)){
             $result = true;
         }
     }
@@ -55,3 +55,5 @@ function validateUser(array $users, string $username, string $password){
     }
     return false;
 }
+
+

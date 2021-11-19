@@ -53,11 +53,21 @@ div.footer {
     z-index: 500;
 }
 
+form i{
+    position: relative;
+    cursor: pointer;
+    left: 97%;
+    bottom:29px;
+}
+
 @media only screen and (max-width:800px){
     .message{
         width: 100%;
         left: 0;
         top: 0;
-
     }
+    form i{
+        left: 90%;
+    }
+
 }

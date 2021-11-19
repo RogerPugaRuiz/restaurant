@@ -50,25 +50,3 @@ function append(string $username, string $password, string $name, string $surnam
         throw new File_not_found_exception("File " . $file_name . " not found");
     }
 }
-
-// echo append("r23", "1234", "roge r", "puga ruiz", "hola");
-
-
-    // if (filter_var($name,FILTER_VALIDATE_REGEXP,ONLYLETTERS) &&
-    //     filter_var($surname,FILTER_VALIDATE_REGEXP,ONLYLETTERS)){
-    //         $data = $username . ";" . $password . ";" . REGISTERED["text"] . ";" . $name . ";" . $surname . "\n";
-    //         if (file_exists($relative_path) && !is_dir($relative_path)){
-    //             $file = fopen($relative_path, 'a');
-    //             fwrite($file,$data);
-    //             fclose($file);
-    //             echo "archivo" . $relative_path;
-                
-    //         }else{
-    //             $file = fopen($relative_path, "w");
-    //             fwrite($file,$data);
-    //             fclose($file);
-    //         }
-    //         return true;
-    // }else{
-    //     throw new Exception("file not found: " . $relative_path);
-    // }

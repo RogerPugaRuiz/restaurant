@@ -3,6 +3,8 @@
 namespace roger\users;
 
 use roger\user as user;
+use roger\user\User as UserUser;
+
 require_once "user.php";
 
 

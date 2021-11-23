@@ -1,4 +1,9 @@
 <?php
+/**
+ * File that contains a functions with all users
+ * @author Roger Puga
+ * 23-11-2021
+ */
 
 namespace roger\users;
 

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * File that contains the menus
+ * @author Roger Puga
+ * 23-11-2021
+ */
 
 require_once "users.php";
 $menus = [

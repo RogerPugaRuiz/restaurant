@@ -5,7 +5,6 @@
         </div>
         <ul class="nav navbar-nav">
             <?php
-            session_start();
 
             use function roger\session\getRoleInSession;
             use function roger\users\getUsers;

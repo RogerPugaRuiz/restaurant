@@ -39,6 +39,7 @@
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
+        // create cookies for remember password and username
         if (filter_has_var(INPUT_POST, "remember")){
             // For a year
             $time = time() + 31556926;

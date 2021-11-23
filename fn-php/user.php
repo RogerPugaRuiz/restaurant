@@ -1,6 +1,10 @@
 <?php
 namespace roger\user;
-
+/**
+ * File that contains the user class
+ * @author Roger Puga
+ * 23-11-2021
+ */
 class User {
     private $username;
     private $password;

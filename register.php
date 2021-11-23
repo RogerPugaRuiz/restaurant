@@ -51,13 +51,20 @@
                     FILENAME);
 
                 if ($is_new_user) {
-                    header("Location:index.php");
+                    ?>
+                    <script src="js/confirm_new_user.js"></script>
+                    <?php
+                    // header('Location: index.php');
+                }else{
+                    echo "<script>alert('User already exists');</script>";
                 }
             } catch (File_not_found_exception $ex) {
-                getMessage("FILE ERROR", "File not found: " . FILENAME);
+                getMessage("FILE ERROR", "File not found");
             } catch (File_is_not_writable $ex) {
-                getMessage("FILE ERROR", "File is not writable, please check permissions: " . FILENAME);
+                getMessage("FILE ERROR", "File is not writable, please check permissions");
             }
+        }else{
+            echo "<script>alert('Invalid new user');</script>";
         }
     }
     if (filter_has_var(INPUT_POST, "cancel")) {

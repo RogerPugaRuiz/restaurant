@@ -1,4 +1,22 @@
+<?php
 
+use function roger\session\getRoleInSession;
+use function roger\read_menus\read_Menus;
+use function roger\read_categories\read_categories;
+
+require_once "fn-php/read_menus.php";
+require_once "fn-php/session.php";
+require_once "fn-php/constants.php";
+require_once "fn-php/read_categories.php";
+
+    session_start();
+    if (isset($_SESSION["name"]) && isset($_SESSION["password"])){
+        // all registered users can see this page
+        // $role = getRoleInSession($_SESSION["name"], $_SESSION["password"]);
+    }else{
+        header("Location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -14,10 +32,10 @@
     <div class="container-fluid">
         <?php include_once "topmenu.php";?>
         <div class="container">
-        <h2>View menus</h2>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-</p>
+            <h2>View menus</h2>
+            <div class="menus" >
+                <?php var_dump(read_Menus(MENU)); ?>
+            </div>
         </div>
         <?php include_once "footer.php";?>
     </div>

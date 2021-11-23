@@ -25,8 +25,18 @@ div.footer {
     color: blueviolet;
 }
 
+th,
+table,
+td {
+    border: 1px solid black;
+}
 
-/* message styles */
+th,
+td {
+    width: 25rem;
+    height: 5rem;
+    text-align: center !important;
+}
 
 .message {
     background: linear-gradient(tomato, rgb(255, 56, 21));

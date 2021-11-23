@@ -40,8 +40,13 @@
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
         if (filter_has_var(INPUT_POST, "remember")){
-            setcookie(name:"name", value:$username,secure: true);
-            setcookie(name:"password",value:$password,secure:true);
+            // For a year
+            $time = time() + 31556926;
+            setcookie(name:"name", value:$username,secure: true, expires_or_options:$time);
+            setcookie(name:"password",value:$password,secure:true, expires_or_options:$time);
+        }else{
+            setcookie(name:"name",expires_or_options:time()- 42000);
+            setcookie(name:"name",expires_or_options:time()- 42000);
         }
 
         $user = login($username, $password);

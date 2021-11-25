@@ -12,16 +12,24 @@ namespace roger\read_menus;
  * @param string $path directory path to read
  * @return array $view_menu
  */
-function read_Menus(string $path, string $category):array {
+function read_menus(string $path, string $category):array {
     $view_menu = [];
-    $header = ["ID","Category", "Name", "Price"];
-    $view_menu["header"] = $header; 
     if (file_exists($path) && is_readable($path)) {
         $file = fopen($path, 'r');
         while ($line = fgets($file)) {
             $element = explode(";",$line);
-            if ($element[1] == $category) {
-                $view_menu[] = $element;
+            if (count($element) == 4){
+                $new_menu = [
+                    "id"=>$element[0],
+                    "category"=>$element[1],
+                    "name"=>$element[2],
+                    "price"=>$element[3]
+                ];
+
+                if ($new_menu["category"] == $category){
+                    $view_menu[]=$new_menu;
+                }
+                
             }
         }
     }

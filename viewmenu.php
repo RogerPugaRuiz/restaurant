@@ -1,7 +1,7 @@
 <?php
 
 use function roger\session\getRoleInSession;
-use function roger\read_menus\read_Menus;
+use function roger\read_menus\read_menus;
 use function roger\read_categories\read_categories;
 
 require_once "fn-php/read_menus.php";
@@ -27,14 +27,40 @@ require_once "fn-php/read_categories.php";
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wire+One&display=swap" rel="stylesheet"> 
     </head>
     <body>
     <div class="container-fluid">
         <?php include_once "topmenu.php";?>
         <div class="container">
-            <h2>View menus</h2>
             <div class="menus" >
-                <?php var_dump(read_Menus(MENU)); ?>
+                <h1>fancy savor</h1>
+                <?php 
+                $categories = read_categories(CATEGORIES);
+                foreach ($categories as $category){
+                    $category = trim($category);
+                    echo "<div class='category' id='$category'>";
+                    
+                    echo "<table class='category-table'>";
+                    echo "<tr><th><h2>$category</h2><th></tr>";
+                    $menus_category = read_menus(MENU,$category);
+                    foreach ($menus_category as $menu){
+                        echo "<tr>";
+                        echo "<td>" . $menu["name"] . "</td>";
+                        echo "<td>" . $menu["price"] . "€</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</div>";
+                }?>
             </div>
         </div>
         <?php include_once "footer.php";?>

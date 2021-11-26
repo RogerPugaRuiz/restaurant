@@ -1,0 +1,31 @@
+0;drink;Coca-Cola;1
+1;firstcourse;Egg Recipes That We Always Crave;10
+2;appetiser;Scallops parmigiana;5
+3;appetiser;Almonds;2
+4;appetiser;Timbale of avocado, cream cheese and salmon;3
+5;firstcourse;Radish and Fennel Salad with Pomegranate-Honey Dressing;14
+6;firstcourse;Tuscan Kale Caesar Slaw;13
+7;firstcourse;Thai Cucumber Slaw;12
+8;firstcourse;Salmon Tartare;13
+9;maincourse;Braised Chicken Legs With Grapes and Fennel;20
+10;maincourse;Seared Scallops With Brown Butter and Lemon Pan Sauce;30
+11;maincourse;Grilled Pizza;20
+12;maincourse;Double-Stack Mushroom and Chicken Cheeseburgers;15
+13;maincourse;Quick Potato Gnocchi;11
+14;maincourse;Broken Lasagna With Parmesan and All the Peas;14
+15;maincourse;Habanero BBQ Shrimp;16
+16;Grilled Pork Spareribs With Soda Bottle Barbecue Sauce;20
+17;dessert;Tiramisu;5
+18;dessert;Chocolate mousse;2
+19;dessert;Angel food cake;6
+20;dessert;ice-cream;7
+21;dessert;Roasted strawberry crumble;5
+22;drink;water;0
+23;drink;caffe;1
+24;drink;white wine;6
+25;drink;red wine;7
+26;drink;champagne;6
+27;drink;cocktails;7
+28;drink;mocktails;5
+29;drink;beer;4
+30;drink;spirits;4

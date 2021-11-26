@@ -1,7 +1,11 @@
 <?php
 
 namespace roger\new_user;
-
+/**
+ * File that contains a new user functions
+ * @author Roger Puga
+ * 23-11-2021
+ */
 use Exception;
 use File_is_not_writable;
 use File_not_found_exception;

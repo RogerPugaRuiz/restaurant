@@ -1,4 +1,10 @@
 <?php
+/**
+ * File to check the login
+ * @author Roger Puga
+ * 23-11-2021
+ */
+
 namespace roger\check_login;
 
 use LoginException;

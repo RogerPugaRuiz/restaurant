@@ -1,5 +1,10 @@
 <?php
 namespace roger\session;
+/**
+ * File that contains the functions when user is login
+ * @author Roger Puga
+ * 23-11-2021
+ */
 use function roger\users\getUsers;
 require_once "users.php";
 

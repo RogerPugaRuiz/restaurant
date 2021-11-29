@@ -10,10 +10,10 @@ require_once "fn-php/constants.php";
 require_once "fn-php/read_categories.php";
 
     session_start();
-    if (isset($_SESSION["name"]) && isset($_SESSION["password"])){
+    if (isset($_SESSION["name"]) && isset($_SESSION["password"])) {
         // all registered users can see this page
         // $role = getRoleInSession($_SESSION["name"], $_SESSION["password"]);
-    }else{
+    } else {
         header("Location:index.php");
     }
 ?>
@@ -28,14 +28,14 @@ require_once "fn-php/read_categories.php";
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet"> 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"> 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Wire+One&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wire+One&display=swap" rel="stylesheet"> 
     </head>
     <body>
     <div class="container-fluid">
@@ -43,24 +43,29 @@ require_once "fn-php/read_categories.php";
         <div class="container">
             <div class="menus" >
                 <h1>fancy savor</h1>
-                <?php 
-                $categories = read_categories(CATEGORIES);
-                foreach ($categories as $category){
-                    $category = trim($category);
-                    echo "<div class='category' id='$category'>";
-                    
-                    echo "<table class='category-table'>";
-                    echo "<tr><th><h2>$category</h2><th></tr>";
-                    $menus_category = read_menus(MENU,$category);
-                    foreach ($menus_category as $menu){
-                        echo "<tr>";
-                        echo "<td>" . $menu["name"] . "</td>";
-                        echo "<td>" . $menu["price"] . "€</td>";
-                        echo "</tr>";
+                <?php
+                try {
+                    $categories = read_categories(CATEGORIES);
+                    foreach ($categories as $category) {
+                        $category = trim($category);
+                        echo "<div class='category' id='$category'>";
+                        
+                        echo "<table class='category-table'>";
+                        echo "<tr><th><h2>$category</h2><th></tr>";
+                        $menus_category = read_menus(MENU, $category);
+                        foreach ($menus_category as $menu) {
+                            echo "<tr>";
+                            echo "<td>" . $menu["name"] . "</td>";
+                            echo "<td>" . $menu["price"] . "€</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                        echo "</div>";
                     }
-                    echo "</table>";
-                    echo "</div>";
-                }?>
+                } catch (Exception $e) {
+                    echo "<div class='error' style='color:red;font-size:20px'>Error on loading file</div>";
+                }
+                ?>
             </div>
         </div>
         <?php include_once "footer.php";?>

@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+use function roger\read_day_menu\read_day_menu;
+use function roger\read_categories\read_categories;
+
+require_once "fn-php/read_categories.php";
+require_once "fn-php/read_day_menu.php";
+require_once "fn-php/constants.php";
+
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -9,15 +18,45 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Estonia&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Wire+One&display=swap" rel="stylesheet"> 
     </head>
     <body>
     <div class="container-fluid">
         <?php include_once "topmenu.php";?>
         <div class="container">
-        <h2>Day menu</h2>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-</p>
+            <div class="menus" >
+                <h1>Day menu</h1>
+                <?php
+                try {
+                    $categories = read_categories(CATEGORIES);
+                    foreach ($categories as $category) {
+                        $category = trim($category);
+                        echo "<div class='category' id='$category'>";
+                        
+                        echo "<table class='category-table'>";
+                        echo "<tr><th><h2>$category</h2><th></tr>";
+                        $menus_category = read_day_menu(DAYMENU, $category);
+
+                        foreach ($menus_category as $menu) {
+                            echo "<tr>";
+                            echo "<td>" . $menu["name"] . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                        echo "</div>";
+                    }
+                } catch (Exception $e) {
+                    echo "<div class='error' style='color:red;font-size:20px'>Error on loading file</div>";
+                }
+                ?>
+            </div>
         </div>
         <?php include_once "footer.php";?>
     </div>

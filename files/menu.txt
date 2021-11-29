@@ -14,7 +14,7 @@
 13;maincourse;Quick Potato Gnocchi;11
 14;maincourse;Broken Lasagna With Parmesan and All the Peas;14
 15;maincourse;Habanero BBQ Shrimp;16
-16;Grilled Pork Spareribs With Soda Bottle Barbecue Sauce;20
+16;maincourse;Grilled Pork Spareribs With Soda Bottle Barbecue Sauce;20
 17;dessert;Tiramisu;5
 18;dessert;Chocolate mousse;2
 19;dessert;Angel food cake;6

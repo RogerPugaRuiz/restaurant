@@ -32,6 +32,13 @@ function read_menus(string $path, string $category):array {
                 
             }
         }
+    }else{
+        if (!file_exists($path)){
+            throw new File_not_found_exception("Error on loading file");
+        }
+        if (!is_readable($path)){
+            throw new File_is_not_writable("Error on loading file");
+        }
     }
     return $view_menu; 
 }

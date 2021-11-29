@@ -9,6 +9,7 @@
 define("FILENAME","/home/roger/public_html/restaurant/files/users.txt");
 define("MENU","/home/roger/public_html/restaurant/files/menu.txt");
 define("CATEGORIES","/home/roger/public_html/restaurant/files/categories.txt");
+define("DAYMENU","/home/roger/public_html/restaurant/files/daymenu.txt");
 
 // regexp
 define("ONLYLETTERS",["options" => ['regexp' => "/^[a-zA-Z]+[\s|-]?[a-zA-Z]+[\s|-]?[a-zA-Z]+$/"]]);

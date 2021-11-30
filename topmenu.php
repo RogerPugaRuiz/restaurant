@@ -13,12 +13,13 @@
             require_once "fn-php/session.php";
             require_once "fn-php/constants.php";
             require_once "fn-php/menus.php";
+            require_once "fn-php/user.php";
 
             $role = "visitor";
             $u = null;
             if (isset($_SESSION["user"])) {
                 $u = unserialize($_SESSION["user"]);
-                $role = $u->getRol();
+                $role = $u->getRole();
             }
 
             foreach ($menus[$role] as $element) {
@@ -26,10 +27,9 @@
             }
             if (isset($_SESSION["user"])){
                 
-                $user = validateUser($users, username:$u->getUsername(),password:$u->getPassword());
-                if ($user != false) {
-                    echo "<li><a>" . $user->getName() . " " . $user->getSurename() . "</a></li>";
-                }
+
+                echo "<li><a>" . $u->getName() . " " . $u->getSurename() . "</a></li>";
+
             }
 
             ?>

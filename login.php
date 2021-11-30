@@ -17,12 +17,13 @@
     session_start();
     use function roger\check_login\login;
     use roger\user\User;
-
+    use function roger\users\getUser;
     use function roger\message\getMessage;
 
     require_once "fn-php/user.php";
-    require_once "fn-php/check_login.php";
     require_once "message.php";
+    require_once "fn-php/users.php";
+    require_once "fn-php/constants.php";
 
     $message_error = "";
 
@@ -32,7 +33,6 @@
     }else{
         $username = "";
         $password = "";
-    
     }
 
     if (filter_has_var(INPUT_POST, "loginsubmit")) {
@@ -50,13 +50,12 @@
             setcookie(name:"name",expires_or_options:time()- 42000);
         }
 
-        $user = login($username, $password);
+        $user = getUser(FILENAME,$username, $password);
         if (!$user) {
+            echo "$username $password";
             $message_error = "Incorrect name or password";
         }else{
-            $_SESSION["name"] = $user->getUsername();
-            $_SESSION["password"] = $user->getPassword();
-            
+            $_SESSION["user"] = serialize($user);
             header("Location:index.php");
         }
     }

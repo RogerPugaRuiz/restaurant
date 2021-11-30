@@ -40,16 +40,14 @@ require_once "fn-php/constants.php";
                         $category = trim($category);
                         echo "<div class='category' id='$category'>";
                         
-                        echo "<table class='category-table'>";
-                        echo "<tr><th><h2>$category</h2><th></tr>";
+                        echo "<ul class='category-table'>";
+                        echo "<h2>$category</h2>";
                         $menus_category = read_day_menu(DAYMENU, $category);
 
                         foreach ($menus_category as $menu) {
-                            echo "<tr>";
-                            echo "<td>" . $menu["name"] . "</td>";
-                            echo "</tr>";
+                            echo "<li>" . $menu["name"] . "</li>";
                         }
-                        echo "</table>";
+                        echo "</ul>";
                         echo "</div>";
                     }
                 } catch (Exception $e) {

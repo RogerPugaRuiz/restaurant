@@ -7,6 +7,7 @@ namespace roger\session;
  */
 use function roger\users\getUsers;
 require_once "users.php";
+require_once "constants.php";
 
 /**
  * Method to get role in session

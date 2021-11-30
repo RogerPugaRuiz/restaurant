@@ -32,6 +32,24 @@ function getUsers(string $path):array{
 }
 
 /**
+ * Method to get an User in a users file 
+ */
+function getUser(string $path,string $username, string $password){
+    if ($file = fopen($path, "r")){
+        while($row = fgets($file)){
+            $element = explode(";", $row);
+            if (count($element) == 5){
+                if ($element[0] == $username && $element[1] == $password){
+                    return new user\User($element[0], $element[1], $element[2], $element[3],$element[4]);
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+/**
  * Method to check if a user exists in the database
  * @param array $users
  * @param $user

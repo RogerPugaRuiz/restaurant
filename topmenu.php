@@ -15,16 +15,18 @@
             require_once "fn-php/menus.php";
 
             $role = "visitor";
-            if (isset($_SESSION["name"]) && isset($_SESSION["password"])) {
-                $role = getRoleInSession($_SESSION["name"], $_SESSION["password"]);
-                $users = getUsers(FILENAME);
+            $u = null;
+            if (isset($_SESSION["user"])) {
+                $u = unserialize($_SESSION["user"]);
+                $role = $u->getRol();
             }
 
             foreach ($menus[$role] as $element) {
                 echo "<li><a href=" . $element["href"] . ">" . $element["name"] . "</a></li>";
             }
-            if (isset($_SESSION["name"]) && isset($_SESSION["password"])){
-                $user = validateUser($users, username:$_SESSION["name"],password:$_SESSION["password"]);
+            if (isset($_SESSION["user"])){
+                
+                $user = validateUser($users, username:$u->getUsername(),password:$u->getPassword());
                 if ($user != false) {
                     echo "<li><a>" . $user->getName() . " " . $user->getSurename() . "</a></li>";
                 }

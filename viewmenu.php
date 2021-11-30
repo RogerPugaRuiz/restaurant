@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use function roger\session\getRoleInSession;
 use function roger\read_menus\read_menus;
@@ -9,8 +10,7 @@ require_once "fn-php/session.php";
 require_once "fn-php/constants.php";
 require_once "fn-php/read_categories.php";
 
-    session_start();
-    if (isset($_SESSION["name"]) && isset($_SESSION["password"])) {
+    if (isset($_SESSION["user"])) {
         // all registered users can see this page
         // $role = getRoleInSession($_SESSION["name"], $_SESSION["password"]);
     } else {
